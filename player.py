@@ -1,5 +1,5 @@
 import pygame
-from circleshape import *
+from circleshape import CircleShape
 from constants import *
 from shot import Shot
 
@@ -28,6 +28,7 @@ class Player(CircleShape):
 
 
     def update(self, dt):
+        self.timer -= dt   
         keys = pygame.key.get_pressed()
 
         if keys[pygame.K_a]:
@@ -45,8 +46,6 @@ class Player(CircleShape):
         if keys[pygame.K_SPACE]:
             self.shoot()
         
-        self.timer -= dt    
-
 
             
     def move(self, dt):
