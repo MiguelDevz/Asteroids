@@ -29,6 +29,9 @@ def main():
 
     #Shots containers
     Shot.containers = (shots, updatable, drawable)
+
+    #init score
+    font = pygame.font.Font(None, 36)
     
     dt = 0
 
@@ -50,8 +53,13 @@ def main():
                 if bullet.check_collision(asteroid):
                     asteroid.split()
                     bullet.kill()
+                    player.add_to_score(1)
 
         screen.fill("black")
+
+        #display score
+        score_text = font.render(f"Score: {player.score}", True, (255, 255, 255))
+        screen.blit(score_text, (10, 10))
 
         #draw the sprite group
         for draw in drawable:
